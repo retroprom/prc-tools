@@ -23,6 +23,8 @@
 extern "C" {
 #endif
 
+#if __palmos__
+
 /* 7.20.3  Memory management functions.  */
 
 #include <MemoryMgr.h>
@@ -43,6 +45,8 @@ extern inline div_t div (int _numer, int _denom) {
 			  : "g" (_denom), "0" ((long) _numer) : "cc");
   return _res;
   }
+
+#endif
 
 #ifdef __cplusplus
 }
