@@ -59,16 +59,12 @@ DATADIR_DEFINE = -DDATA_PREFIX=\"$(datadir)/prc-tools\"
 
 UTILS_DEFINES = -DPRC_TOOLS_VERSION=\"@prc_tools_version@\"
 
-PALMDEV_PREP_DEFINES = \
-  -DSTANDARD_EXEC_PREFIX=\"$(libdir)/gcc-lib\" $(DATADIR_DEFINE) \
-  -DPALMDEV_PREFIX=\"@palmdev_prefix@\"
-
 TRAPFILT_DEFINES = $(DATADIR_DEFINE)
 
 
 PFD = libpfd.a
 
-GENERIC_PROGS = build-prc$(exeext) palmdev-prep$(exeext)
+GENERIC_PROGS = build-prc$(exeext)
 
 M68K_PROGS = \
 	obj-res$(exeext) multigen$(exeext) stubgen$(exeext) trapfilt$(exeext)
@@ -116,10 +112,6 @@ stubgen_objs = stubgen.o utils.o def.yy.o def.tab.o
 stubgen$(exeext): $(stubgen_objs) $(PFD)
 	$(CC) $(ALL_LDFLAGS) -o $@ $(stubgen_objs) -liberty -lpfd $(LIBS)
 
-palmdev_prep_objs = palmdev-prep.o utils.o dirutils.o
-palmdev-prep$(exeext): $(palmdev_prep_objs)
-	$(CC) $(ALL_LDFLAGS) -o $@ $(palmdev_prep_objs) -liberty $(LIBS)
-
 trapfilt_objs = trapfilt.o utils.o
 trapfilt$(exeext): $(trapfilt_objs)
 	$(CC) $(ALL_LDFLAGS) -o $@ $(trapfilt_objs) -liberty $(LIBS)
@@ -135,9 +127,6 @@ dirutils.o: dirutils.c utils.h
 
 utils.o: utils.c utils.h
 	$(CC) $(ALL_CFLAGS) $(UTILS_DEFINES) -c $(srcdir)/utils.c
-
-palmdev-prep.o: palmdev-prep.c utils.h
-	$(CC) $(ALL_CFLAGS) $(PALMDEV_PREP_DEFINES) -c $(srcdir)/palmdev-prep.c
 
 trapfilt.o: trapfilt.c utils.h
 	$(CC) $(ALL_CFLAGS) $(TRAPFILT_DEFINES) -c $(srcdir)/trapfilt.c
