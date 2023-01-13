@@ -434,7 +434,7 @@ Give up (and stop debugging it)? "))
 }
 
 /* If nonzero, ignore the next kill.  */
-static int kill_kludge;
+extern int kill_kludge;
 
 /* Wait until the remote machine stops, then return,
    storing status in STATUS just as `wait' would.

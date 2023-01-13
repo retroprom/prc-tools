@@ -527,7 +527,7 @@ static long computeSignal( long exceptionVector )
 }
 
 /* If nonzero, ignore the next kill.  */
-int kill_kludge;
+extern int kill_kludge;
 
 /* Read a single character from the remote end. */
 

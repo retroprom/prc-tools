@@ -411,9 +411,6 @@ Give up (and stop debugging it)? "))
   target_terminal_inferior ();
 }
 
-/* If nonzero, ignore the next kill.  */
-int kill_kludge;
-
 /* Wait until the remote machine stops, then return, storing status in
    STATUS just as `wait' would.  Returns "pid" (though it's not clear
    what, if anything, that means in the case of this target).  */
