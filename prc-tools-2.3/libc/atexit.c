@@ -28,7 +28,7 @@ int
 atexit (void (*func)(void)) {
   unsigned int nfuncs;
   void (**list)(void);
-  
+
   if (exitfuncsH) {
     UInt32 len = MemHandleSize (exitfuncsH);
     if (MemHandleResize (exitfuncsH, len + sizeof (void (*)(void))) == 0)

@@ -37,7 +37,7 @@ static char fb[XMAX * YMAX];
 static int xc;
 static int yc;
 
-static inline int DRAWLN(int LN) 
+static inline int DRAWLN(int LN)
 {
   FntSetFont(stdFont);
   WinDrawChars(&fb[LN * XMAX], StrLen(&fb[LN * XMAX]), XB, YB + YINC*(LN));
